@@ -1,4 +1,8 @@
 :host {
     display: flex;
     flex-wrap: wrap;
+
+    app-unicorn-card {
+        margin: 10px;
+    }
 }

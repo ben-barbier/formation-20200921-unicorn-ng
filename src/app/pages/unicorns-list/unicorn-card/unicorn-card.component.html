@@ -1,7 +1,22 @@
-{{ unicorn.id }}<br />
-{{ unicorn.name | magic }}<br />
-{{ unicorn.birthyear }}<br />
-{{ unicorn.weight }}<br />
-<img [src]="unicorn.photo" alt="photo" /><br />
-{{ unicorn.hobbies }}<br />
-{{ unicorn.capacities }}<br />
+<mat-card>
+    <mat-card-header>
+        <img [src]="unicorn.photo" mat-card-avatar alt="photo" /><br />
+        <mat-card-title>{{ unicorn.name | magic }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ unicorn.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="unicorn.photo" alt="photo" />
+    <mat-card-content>
+        <ul>
+            <li>Birthyear: {{ unicorn.birthyear }}</li>
+            <li>Weight: {{ unicorn.weight }}</li>
+            <li>Hobbies: {{ unicorn.hobbies }}</li>
+            <li>CapacityLabels: {{ unicorn.capacityLabels }}</li>
+        </ul>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-fab color="warn"><mat-icon>delete</mat-icon></button>
+        <button mat-fab color="primary"><mat-icon>edit</mat-icon></button>
+        <button mat-fab color="primary"><mat-icon>visibility</mat-icon></button>
+        <button mat-fab color="primary"><mat-icon>favorite</mat-icon></button>
+    </mat-card-actions>
+</mat-card>

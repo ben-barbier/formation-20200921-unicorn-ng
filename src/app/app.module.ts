@@ -11,13 +11,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { UnicornCardComponent } from './pages/unicorns-list/unicorn-card/unicorn-card.component';
 import { UnicornsListComponent } from './pages/unicorns-list/unicorns-list.component';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { MagicPipe } from './shared/pipes/magic.pipe';
 
 @NgModule({
-    declarations: [AppComponent, UnicornsListComponent, UnicornCardComponent, MagicPipe, NavComponent],
+    declarations: [AppComponent, UnicornsListComponent, UnicornCardComponent, MagicPipe, NavComponent, AdminComponent],
     imports: [
         BrowserModule,
         HttpClientModule,

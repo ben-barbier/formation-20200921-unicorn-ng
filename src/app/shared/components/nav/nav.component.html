@@ -9,9 +9,8 @@
     >
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item href="#">Link 1</a>
-            <a mat-list-item href="#">Link 2</a>
-            <a mat-list-item href="#">Link 3</a>
+            <a mat-list-item [routerLink]="['/']">Unicorns</a>
+            <a mat-list-item [routerLink]="['admin']">Admin</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -27,9 +26,9 @@
             </button>
             <span>unicorn-ng</span>
             <span class="spacer"></span>
-            <span>? x <mat-icon>favorite</mat-icon></span>
+            <span>{{ (cart$ | async)?.length }} x <mat-icon>favorite</mat-icon></span>
         </mat-toolbar>
         <!-- Add Content Here -->
-        <app-unicorns-list></app-unicorns-list>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

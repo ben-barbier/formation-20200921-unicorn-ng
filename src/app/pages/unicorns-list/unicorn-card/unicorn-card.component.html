@@ -17,6 +17,8 @@
         <button mat-fab color="warn"><mat-icon>delete</mat-icon></button>
         <button mat-fab color="primary"><mat-icon>edit</mat-icon></button>
         <button mat-fab color="primary"><mat-icon>visibility</mat-icon></button>
-        <button mat-fab color="primary"><mat-icon>favorite</mat-icon></button>
+        <button mat-fab [color]="isInCart ? 'accent' : 'primary'" (click)="toggleToCart()">
+            <mat-icon>favorite</mat-icon>
+        </button>
     </mat-card-actions>
 </mat-card>

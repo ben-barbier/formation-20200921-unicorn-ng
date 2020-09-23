@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { interval, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CartSelectors } from '../../../store/services';
 
@@ -9,8 +10,10 @@ import { CartSelectors } from '../../../store/services';
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.scss'],
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
     cart$ = this.cartSelectors.cart$;
+
+    now$;
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
         map(result => result.matches),
@@ -18,4 +21,8 @@ export class NavComponent {
     );
 
     constructor(private breakpointObserver: BreakpointObserver, private cartSelectors: CartSelectors) {}
+
+    ngOnInit(): void {
+        this.now$ = interval(1000).pipe(map(() => moment().format('MMMM Do YYYY, h:mm:ss a')));
+    }
 }

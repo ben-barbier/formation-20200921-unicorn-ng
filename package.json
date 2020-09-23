@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "build:audit": "ng build --prod --source-map",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -25,6 +26,7 @@
     "@angular/router": "~10.1.2",
     "@ngrx/effects": "^10.0.0",
     "@ngrx/store": "^10.0.0",
+    "moment": "^2.29.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -36,6 +38,7 @@
     "@ngrx/store-devtools": "^10.0.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/moment": "^2.13.0",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "husky": "^4.3.0",

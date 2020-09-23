@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './pages/admin/admin.component';
-import { UnicornsListComponent } from './pages/unicorns-list/unicorns-list.component';
 
 const routes: Routes = [
-    { path: '', component: UnicornsListComponent },
-    { path: 'admin', component: AdminComponent },
+    {
+        path: '',
+        loadChildren: () => import('./pages/unicorns-list/unicorns-list.module').then(m => m.UnicornsListModule),
+    },
+    { path: 'admin', loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule) },
     { path: '**', redirectTo: '' },
 ];
 

@@ -1,1 +1,8 @@
-<app-nav></app-nav>
+<app-nav>
+    <mat-nav-list class="menu">
+        <a mat-list-item [routerLink]="['/']">Unicorns</a>
+        <a mat-list-item [routerLink]="['admin']">Admin</a>
+    </mat-nav-list>
+
+    <router-outlet class=".content"></router-outlet>
+</app-nav>

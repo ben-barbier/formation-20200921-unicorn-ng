@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { Unicorn } from '../../shared/models/unicorn.model';
 import * as CartActions from '../actions/cart.actions';
+import * as UnicornsActions from '../actions/unicorns.actions';
 
 export interface CartState {
     cart: Unicorn[];
@@ -28,6 +29,11 @@ export const cartReducer = createReducer(
     })),
     on(CartActions.clearCart, () => ({
         cart: [],
+        loading: false,
+        error: false,
+    })),
+    on(UnicornsActions.deleteUnicorn, (state, { unicorn }) => ({
+        cart: state.cart.filter(u => u.id !== unicorn.id),
         loading: false,
         error: false,
     })),

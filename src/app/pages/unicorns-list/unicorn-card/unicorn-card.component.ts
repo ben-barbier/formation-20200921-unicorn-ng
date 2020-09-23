@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Unicorn } from '../../../shared/models/unicorn.model';
-import { CartService } from '../../../shared/services/cart.service';
+import { CartDispatchers, CartSelectors, UnicornsDispatchers } from '../../../store/services';
 
 @Component({
     selector: 'app-unicorn-card',
@@ -10,27 +10,28 @@ import { CartService } from '../../../shared/services/cart.service';
 })
 export class UnicornCardComponent implements OnInit {
     @Input() public unicorn: Unicorn;
-    @Output() public delete = new EventEmitter<void>();
 
     public isInCart: boolean;
 
-    constructor(private cartService: CartService) {}
+    constructor(
+        private cartDispatchers: CartDispatchers,
+        private cartSelectors: CartSelectors,
+        private unicornsDispatchers: UnicornsDispatchers,
+    ) {}
 
     ngOnInit(): void {
-        this.cartService.isInCart(this.unicorn).subscribe(isInCart => {
-            this.isInCart = isInCart;
-        });
+        this.cartSelectors.isInCart$(this.unicorn).subscribe(isInCart => (this.isInCart = isInCart));
     }
 
     public toggleToCart(): void {
         if (this.isInCart) {
-            this.cartService.removeFromCart(this.unicorn);
+            this.cartDispatchers.removeFromCart(this.unicorn);
         } else {
-            this.cartService.addToCart(this.unicorn);
+            this.cartDispatchers.addToCart(this.unicorn);
         }
     }
 
     public onDelete(): void {
-        this.delete.emit();
+        this.unicornsDispatchers.deleteUnicorn(this.unicorn);
     }
 }

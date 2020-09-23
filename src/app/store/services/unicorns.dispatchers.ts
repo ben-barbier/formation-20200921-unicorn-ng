@@ -11,4 +11,8 @@ export class UnicornsDispatchers {
     deleteUnicorn(unicorn: Unicorn): void {
         this.store.dispatch(UnicornsAction.deleteUnicorn({ unicorn }));
     }
+
+    loadUnicorns(): void {
+        this.store.dispatch(UnicornsAction.loadUnicorns());
+    }
 }

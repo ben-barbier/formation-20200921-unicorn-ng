@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../shared/services/cart.service';
+import { CartDispatchers } from '../../store/services';
 
 @Component({
     selector: 'app-admin',
@@ -7,11 +7,11 @@ import { CartService } from '../../shared/services/cart.service';
     styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-    constructor(private cartService: CartService) {}
+    constructor(private cartDispatchers: CartDispatchers) {}
 
     ngOnInit(): void {}
 
     public clearCart(): void {
-        this.cartService.clearCart();
+        this.cartDispatchers.clearCart();
     }
 }

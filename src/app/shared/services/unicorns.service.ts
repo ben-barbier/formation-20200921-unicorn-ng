@@ -54,4 +54,8 @@ export class UnicornsService {
             ),
         );
     }
+
+    delete(unicorn: Unicorn): Observable<void> {
+        return this.http.delete<void>(`${environment.apiUrl}/unicorns/${unicorn.id}`);
+    }
 }

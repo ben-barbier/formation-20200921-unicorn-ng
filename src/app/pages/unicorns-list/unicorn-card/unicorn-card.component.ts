@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Unicorn } from '../../../shared/models/unicorn.model';
 import { CartService } from '../../../shared/services/cart.service';
 
@@ -10,6 +10,7 @@ import { CartService } from '../../../shared/services/cart.service';
 })
 export class UnicornCardComponent implements OnInit {
     @Input() public unicorn: Unicorn;
+    @Output() public delete = new EventEmitter<void>();
 
     public isInCart: boolean;
 
@@ -17,7 +18,6 @@ export class UnicornCardComponent implements OnInit {
 
     ngOnInit(): void {
         this.cartService.isInCart(this.unicorn).subscribe(isInCart => {
-            console.count('UnicornCardComponent.isInCart');
             this.isInCart = isInCart;
         });
     }
@@ -28,5 +28,9 @@ export class UnicornCardComponent implements OnInit {
         } else {
             this.cartService.addToCart(this.unicorn);
         }
+    }
+
+    public onDelete(): void {
+        this.delete.emit();
     }
 }

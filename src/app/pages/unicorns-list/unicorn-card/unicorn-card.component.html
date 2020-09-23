@@ -14,7 +14,7 @@
         </ul>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-fab color="warn"><mat-icon>delete</mat-icon></button>
+        <button mat-fab color="warn" (click)="onDelete()"><mat-icon>delete</mat-icon></button>
         <button mat-fab color="primary"><mat-icon>edit</mat-icon></button>
         <button mat-fab color="primary"><mat-icon>visibility</mat-icon></button>
         <button mat-fab [color]="isInCart ? 'accent' : 'primary'" (click)="toggleToCart()">
